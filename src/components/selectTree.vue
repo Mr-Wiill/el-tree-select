@@ -16,11 +16,11 @@
 
 <script>
 export default {
-  name: "el-select-tree",
+  name: "el-tree-select",
   // props: ['data', 'defaultProps', 'value'],
   props:{
     data:{
-      type: Array,
+      type: Array,        // 必须是树形结构的对象数组
       default: ()=>{
         return []
       }
