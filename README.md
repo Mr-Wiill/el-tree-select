@@ -1,4 +1,4 @@
-# vue-selete-tree-com
+# vue-tree-selete-com
 
 ## Project setup
 ```
@@ -27,4 +27,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# vue-selectTree-component
+# vue-treeSelect-component
