@@ -2,8 +2,8 @@
   <div id="app">
     <h1>{{`基于Element-UI组件改造的树形选择器`}}</h1>
     <SelectTree 
-      :data="list" 
-      :valueKey="valueId" 
+      :options="list" 
+      :value="valueId" 
       @getValue="getValue($event)"/>
   </div>
 </template>

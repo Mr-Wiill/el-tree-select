@@ -4,7 +4,7 @@
       <el-tree  
         accordion
         ref="selectTree"
-        :data="data"
+        :data="options"
         :props="defaultProps"
         :node-key="defaultProps.value"    
         :default-expanded-keys="defaultExpandedKey"
@@ -17,9 +17,9 @@
 <script>
 export default {
   name: "el-tree-select",
-  // props: ['data', 'defaultProps', 'value'],
+  // props: ['options', 'defaultProps', 'value'],
   props:{
-    data:{
+    options:{
       type: Array,        // 必须是树形结构的对象数组
       default: ()=>{
         return []
@@ -35,7 +35,7 @@ export default {
         }
       }
     },
-    valueKey:{
+    value:{
       type: Number,
       default: ()=>{
         return null
@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      value:this.valueKey,    // 初始值
+      valueId:this.value,    // 初始值
       valueTitle:'',
       defaultExpandedKey:[]    
     }
@@ -55,26 +55,23 @@ export default {
   methods: {
     // 初始化值
     initHandle(){
-      if(this.value){
-        this.valueTitle = this.$refs.selectTree.getNode(this.value).data.title     // 初始化显示
-        this.$refs.selectTree.setCurrentKey(this.value)       // 设置默认选中
-        this.defaultExpandedKey = [this.value]      // 设置默认展开
+      if(this.valueId){
+        this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data.title     // 初始化显示
+        this.$refs.selectTree.setCurrentKey(this.valueId)       // 设置默认选中
+        this.defaultExpandedKey = [this.valueId]      // 设置默认展开
       } 
-      // else{
-      //   this.clearHandle()
-      // }
     },
     // 切换选项
     handleNodeClick(node){
       this.valueTitle = node[this.defaultProps.label]
-      this.value = node[this.defaultProps.value]
-      this.$emit('getValue',this.value)
+      this.valueId = node[this.defaultProps.value]
+      this.$emit('getValue',this.valueId)
       this.defaultExpandedKey = []
     },
     // 清除选中
     clearHandle(){
       this.valueTitle = ''
-      this.value = null
+      this.valueId = null
       this.defaultExpandedKey = []
       this.$refs.selectTree.setCurrentKey(null)       // 设置默认选中
       this.$emit('getValue',null)
