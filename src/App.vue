@@ -4,6 +4,7 @@
     <SelectTree 
       :options="list" 
       :value="valueId" 
+      :props="props"
       @getValue="getValue($event)"/>
   </div>
 </template>

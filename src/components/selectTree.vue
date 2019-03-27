@@ -5,8 +5,8 @@
         accordion
         ref="selectTree"
         :data="options"
-        :props="defaultProps"
-        :node-key="defaultProps.value"    
+        :props="props"
+        :node-key="props.value"    
         :default-expanded-keys="defaultExpandedKey"
         @node-click="handleNodeClick">
       </el-tree>
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "el-tree-select",
-  // props: ['options', 'defaultProps', 'value'],
+  // props: ['options', 'props', 'value'],
   props:{
     options:{
       type: Array,        // 必须是树形结构的对象数组
@@ -25,7 +25,7 @@ export default {
         return []
       }
     },
-    defaultProps:{
+    props:{
       type: Object,
       default:()=>{
         return {
@@ -63,8 +63,8 @@ export default {
     },
     // 切换选项
     handleNodeClick(node){
-      this.valueTitle = node[this.defaultProps.label]
-      this.valueId = node[this.defaultProps.value]
+      this.valueTitle = node[this.props.label]
+      this.valueId = node[this.props.value]
       this.$emit('getValue',this.valueId)
       this.defaultExpandedKey = []
     },
