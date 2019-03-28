@@ -1,5 +1,5 @@
 <template>
-  <el-select :value="valueTitle" clearable @clear="clearHandle">
+  <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
     <el-option :value="valueTitle" :label="valueTitle">
       <el-tree  
         accordion
@@ -39,6 +39,12 @@ export default {
       type: Number,
       default: ()=>{
         return null
+      }
+    },
+    clearable:{
+      type:Boolean,
+      default:()=>{
+        return true
       }
     }
   },

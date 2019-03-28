@@ -5,6 +5,7 @@
       :options="list" 
       :value="valueId" 
       :props="props"
+      :clearable="true"
       @getValue="getValue($event)"/>
   </div>
 </template>
