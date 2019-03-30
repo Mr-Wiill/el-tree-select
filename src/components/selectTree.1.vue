@@ -1,9 +1,9 @@
 <template>
-  <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
-    <el-option :value="valueTitle" :label="valueTitle">
+  <el-select v-model="valuesTitle" :clearable="clearable" :multiple="multiple" @clear="clearHandle">
+    <el-option :value="valuesTitle">
       <el-tree  
-        accordion
         ref="selectTree"
+        :accordion="accordion"
         :data="options"
         :props="props"
         :node-key="props.value"    
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: "el-tree-select",
   props:{
@@ -36,9 +37,8 @@ export default {
         return []
       }
     },
-    /* 值 */
+    /* 初始值 */
     value:{
-      type: Number,
       default: ()=>{
         return null
       }
@@ -49,13 +49,27 @@ export default {
       default:()=>{
         return true
       }
+    },
+    /* 自动收起 */
+    accordion:{
+      type:Boolean,
+      default:()=>{
+        return false
+      }
+    },
+    /* 可多选 */
+    multiple:{
+      type:Boolean,
+      default:()=>{
+        return false
+      }
     }
   },
   data() {
     return {
-      valueId:this.value,    // 初始值
-      valueTitle:'',
-      defaultExpandedKey:[]    
+      valuesId: this.value,     // 初始值
+      valuesTitle: this.multiple ? [] : '',
+      defaultExpandedKey: [],    
     }
   },
   mounted(){
@@ -64,23 +78,40 @@ export default {
   methods: {
     // 初始化值
     initHandle(){
-      if(this.valueId){
-        this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data.title     // 初始化显示
-        this.$refs.selectTree.setCurrentKey(this.valueId)       // 设置默认选中
-        this.defaultExpandedKey = [this.valueId]      // 设置默认展开
-      } 
+      if (!this.valuesId) return 
+      if(!this.multiple){
+        this.valuesTitle = this.$refs.selectTree.getNode(this.valuesId).data.title     // 初始化显示
+        this.$refs.selectTree.setCurrentKey(this.valuesId)       // 设置默认选中
+        this.defaultExpandedKey = [this.valuesId]      // 设置默认展开
+      } else {
+        console.log('multiple')
+      }
     },
     // 切换选项
-    handleNodeClick({id}){
-      this.valueTitle = node[this.props.label]
-      this.valueId = node[this.props.value]
-      this.$emit('getValue',this.valueId)
-      this.defaultExpandedKey = []
+    handleNodeClick(node){
+      if (!this.valuesId) return 
+      if (!this.multiple) {         // 单选
+        this.valuesTitle = node[this.props.label]
+        this.valuesId = node[this.props.value]
+        this.$emit('getValue',this.valuesId)
+        this.defaultExpandedKey = []
+      } else {                    // 多选
+        let index = this.valuesId.indexOf(node[this.props.value])
+        if (index <= -1) {
+          this.valuesId.push(node[this.props.value])
+          this.valuesTitle.push(node[this.props.label])
+          this.$emit('getValue',this.valuesId)
+        } else {
+          this.valuesId.splice(index, 1)
+          this.valuesTitle.splice(index, 1)
+          this.$emit('getValue',this.valuesId)
+        }
+      }
     },
-    // 清除选中
+    // 清空选项
     clearHandle(){
-      this.valueTitle = ''
-      this.valueId = null
+      this.valuesTitle = ''
+      this.valuesId = null
       this.defaultExpandedKey = []
       this.$refs.selectTree.setCurrentKey(null)       // 设置默认选中
       this.$emit('getValue',null)
