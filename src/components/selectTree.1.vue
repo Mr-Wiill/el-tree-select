@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="valuesTitle" :clearable="clearable" :multiple="multiple" @clear="clearHandle">
+  <el-select v-model="valuesTitle" :clearable="clearable" :multiple="multiple" @clear="clearHandle" @remove-tag="removeTag">
     <el-option :value="valuesTitle">
       <el-tree  
         ref="selectTree"
@@ -107,6 +107,10 @@ export default {
           this.$emit('getValue',this.valuesId)
         }
       }
+    },
+    // 移除单个选项（多选）
+    removeTag(node){
+      console.log(node)
     },
     // 清空选项
     clearHandle(){
