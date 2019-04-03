@@ -86,6 +86,12 @@ export default {
       this.$emit('getValue',null)
     }
   },
+  watch: {
+    value(){
+      this.valueId = this.value
+      this.initHandle()
+    }
+  },
 };
 </script>
 
