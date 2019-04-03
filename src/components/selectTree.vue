@@ -71,7 +71,7 @@ export default {
       } 
     },
     // 切换选项
-    handleNodeClick({id}){
+    handleNodeClick(node){
       this.valueTitle = node[this.props.label]
       this.valueId = node[this.props.value]
       this.$emit('getValue',this.valueId)
