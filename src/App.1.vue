@@ -64,6 +64,11 @@ export default {
                   id:7,
                   title:'树形选择器',
                   parentId:6  
+                },
+                {
+                  id:8,
+                  title:'树形下拉框',
+                  parentId:6  
                 }
               ]
             }

@@ -81,25 +81,30 @@ export default {
       if (!this.valuesId) return 
       if(!this.multiple){
         this.valuesTitle = this.$refs.selectTree.getNode(this.valuesId).data.title     // 初始化显示
-        this.$refs.selectTree.setCurrentKey(this.valuesId)       // 设置默认选中
+        // this.$refs.selectTree.setCurrentKey(this.valuesId)       // 设置默认选中
         this.defaultExpandedKey = [this.valuesId]      // 设置默认展开
       } else {
         console.log('multiple')
       }
     },
     // 切换选项
-    handleNodeClick(node){
+    handleNodeClick(data,node,com){
       if (!this.valuesId) return 
+      this.setNodeData(data)
+      this.addActiveClass(com)
+    },
+    // 设置选项
+    setNodeData(data){
       if (!this.multiple) {         // 单选
-        this.valuesTitle = node[this.props.label]
-        this.valuesId = node[this.props.value]
+        this.valuesTitle = data[this.props.label]
+        this.valuesId = data[this.props.value]
         this.$emit('getValue',this.valuesId)
         this.defaultExpandedKey = []
       } else {                    // 多选
-        let index = this.valuesId.indexOf(node[this.props.value])
+        let index = this.valuesId.indexOf(data[this.props.value])
         if (index <= -1) {
-          this.valuesId.push(node[this.props.value])
-          this.valuesTitle.push(node[this.props.label])
+          this.valuesId.push(data[this.props.value])
+          this.valuesTitle.push(data[this.props.label])
           this.$emit('getValue',this.valuesId)
         } else {
           this.valuesId.splice(index, 1)
@@ -107,6 +112,18 @@ export default {
           this.$emit('getValue',this.valuesId)
         }
       }
+    },
+    // 选中样式
+    addActiveClass(com){
+      this.$nextTick(()=>{
+        let classList = com.$el.querySelectorAll('.el-tree-node__content')[0].classList;
+        const isSelected = /is-selected/g.test(classList.value)
+        if (!isSelected) {
+          classList.add('is-selected')
+        } else {
+          classList.remove('is-selected')
+        }
+      })
     },
     // 移除单个选项（多选）
     removeTag(node){
@@ -139,11 +156,11 @@ export default {
   .el-tree-node__label{
     font-weight: normal;
   }
-  .el-tree >>>.is-current .el-tree-node__label{
+  .el-tree >>>.is-selected .el-tree-node__label{
     color: #409EFF;
     font-weight: 700;
   }
-  .el-tree >>>.is-current .el-tree-node__children .el-tree-node__label{
+  .el-tree >>>.is-selected .el-tree-node__children .el-tree-node__label{
     color:#606266;
     font-weight: normal;
   }
