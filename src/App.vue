@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import SelectTree from "./components/selectTree.vue";
+import SelectTree from "./components/treeSelect.vue";
 
 export default {
   name: "app",
