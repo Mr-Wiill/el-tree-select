@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <!-- <h1>{{`基于Element-UI组件改造的树形选择器`}}</h1> -->
-    <div class="checkout">
+    <!-- <div class="checkout">
       <el-button @click="singleSelect">单选</el-button> <el-button @click="multipleSelect">多选</el-button>
-    </div>
+    </div> -->
+    <h3>开发多选</h3>
     <SelectTree 
       :options="list" 
       :props="props"
