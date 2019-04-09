@@ -2,8 +2,8 @@
   <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
     <el-option :value="valueTitle" :label="valueTitle">
       <el-tree  
-        accordion
         ref="selectTree"
+        :accordion="accordion"
         :data="options"
         :props="props"
         :node-key="props.value"    
@@ -49,7 +49,12 @@ export default {
       default:()=>{
         return true
       }
-    }
+    },
+    /* 自动收起 */
+    accordion:{
+      type:Boolean,
+      default:()=>{ return false }
+    },
   },
   data() {
     return {

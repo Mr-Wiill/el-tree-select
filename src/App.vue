@@ -2,10 +2,11 @@
   <div id="app">
     <h1>{{`基于Element-UI组件改造的树形选择器`}}</h1>
     <SelectTree 
-      :options="list" 
-      :value="valueId" 
       :props="props"
-      :clearable="true"
+      :options="list"
+      :value="valueId"
+      :clearable="isClearable"
+      :accordion="isAccordion"
       @getValue="getValue($event)"/>
   </div>
 </template>
@@ -20,12 +21,15 @@ export default {
   },
   data() {
     return { 
-      valueId:5,      // 选项的初始ID
-      props:{
+      isClearable:true,     // 可清空（可选）
+      isAccordion:true,     // 可收起（可选）
+      valueId:5,            // 初始ID（可选）
+      props:{               // 配置项（必选）
         value: 'id',
         label: 'title',
         children: 'children'
       },
+      // 选项列表（必选）
       list:[
         {
           id:1,
