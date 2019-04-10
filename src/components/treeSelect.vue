@@ -36,7 +36,7 @@ export default {
         return []
       }
     },
-    /* 值 */
+    /* 初始值 */
     value:{
       type: Number,
       default: ()=>{
