@@ -32,23 +32,17 @@ export default {
     /* 选项列表数据 */
     options:{
       type: Array,        // 必须是树形结构的对象数组
-      default: ()=>{
-        return []
-      }
+      default: ()=>{ return [] }
     },
     /* 初始值 */
     value:{
       type: Number,
-      default: ()=>{
-        return null
-      }
+      default: ()=>{ return null }
     },
     /* 可清空选项 */
     clearable:{
       type:Boolean,
-      default:()=>{
-        return true
-      }
+      default:()=>{ return true }
     },
     /* 自动收起 */
     accordion:{
