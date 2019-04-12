@@ -29,9 +29,9 @@ export default {
         }
       }
     },
-    /* 选项列表数据 */
+    /* 选项列表数据(树形结构的对象数组) */
     options:{
-      type: Array,        // 必须是树形结构的对象数组
+      type: Array,       
       default: ()=>{ return [] }
     },
     /* 初始值 */
