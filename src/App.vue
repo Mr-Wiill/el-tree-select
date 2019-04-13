@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>{{`基于Element-UI组件改造的树形选择器`}}</h1>
+    <!-- 调用树形下拉框组件 -->
     <SelectTree 
       :props="props"
       :options="list"
@@ -27,7 +28,8 @@ export default {
       props:{               // 配置项（必选）
         value: 'id',
         label: 'title',
-        children: 'children'
+        children: 'children',
+        // disabled:true
       },
       // 选项列表（必选）
       list:[
@@ -39,6 +41,7 @@ export default {
           id:2,
           title:'Element-UI',
           parentId:0,
+          disabled:true,
           children:[
             {
               id:4,

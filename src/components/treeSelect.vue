@@ -99,6 +99,7 @@ export default {
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item{
     height: auto;
     padding: 0;
+    
   }
   .el-select-dropdown__item.selected{
     font-weight: normal;
@@ -117,4 +118,15 @@ export default {
     color:#606266;
     font-weight: normal;
   }
+
+
+  /* .el-tree-node:focus>.el-tree-node__content{
+    background-color:transparent;
+    background-color: #f5f7fa;
+    color: #c0c4cc;
+    cursor: not-allowed;
+  }
+  .el-tree-node__content:hover{
+    background-color: #f5f7fa;
+  } */
 </style>
