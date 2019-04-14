@@ -41,7 +41,7 @@ export default {
     },
     /* 初始值 */
     value:{
-      default: ()=>{ return null }
+      // default: ()=>{ return null }
     },
     /* 可清空选项 */
     clearable:{
@@ -84,7 +84,6 @@ export default {
     },
     // 切换选项
     handleNodeClick(data,node,com){
-      // if (!this.valuesId) return 
       this.setNodeData(data)
       this.addSelected(com)
     },
@@ -96,6 +95,8 @@ export default {
         this.$emit('getValue',this.valuesId)
         this.defaultExpandedKey = []
       } else {                    // 多选
+        console.log(this.valuesId,111111111);
+        // let index = this.valuesId.length>0 ? this.valuesId.indexOf(data[this.props.value]) : -1
         let index = this.valuesId.indexOf(data[this.props.value])
         if (index <= -1) {
           this.valuesId.push(data[this.props.value])
@@ -145,6 +146,7 @@ export default {
       this.clearSelected()
       // this.$refs.selectTree.setCurrentKey(null)       // 设置默认选中
       this.$emit('getValue',null)
+      console.log(this.valuesId,222222222);
     },
     // 移除单个选项（多选）
     removeTag(node){
@@ -154,6 +156,7 @@ export default {
   watch:{
     value(){
       this.valuesId = this.value
+      console.log(this.valuesId,111);
     }
   }
 };

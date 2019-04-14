@@ -29,7 +29,7 @@ export default {
       isClearable:true,
       isAccordion:false,
       isMultiple:true,
-      valueId:[],      // 选项的初始ID
+      valueId:[5],      // 选项的初始ID
       props:{
         value: 'id',
         label: 'title',
