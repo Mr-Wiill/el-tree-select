@@ -1,4 +1,4 @@
-# vue-tree-selete-com
+# vue-treeSelect-component
 
 ## Project setup
 ```
