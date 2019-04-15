@@ -155,7 +155,7 @@ export default {
   },
   watch:{
     value(){
-      this.valuesId = this.value
+      // this.valuesId = this.value
       console.log(this.valuesId,111);
     }
   }
