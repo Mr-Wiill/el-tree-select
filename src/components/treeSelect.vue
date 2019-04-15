@@ -118,7 +118,7 @@ export default {
     font-weight: normal;
   }
 
-
+  /* 开发禁用 */
   /* .el-tree-node:focus>.el-tree-node__content{
     background-color:transparent;
     background-color: #f5f7fa;
