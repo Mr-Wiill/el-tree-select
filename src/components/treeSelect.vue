@@ -64,7 +64,7 @@ export default {
     // 初始化值
     initHandle(){
       if(this.valueId){
-        this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data.title     // 初始化显示
+        this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data[this.props.label]     // 初始化显示
         this.$refs.selectTree.setCurrentKey(this.valueId)       // 设置默认选中
         this.defaultExpandedKey = [this.valueId]      // 设置默认展开
       } 
@@ -88,7 +88,7 @@ export default {
   watch: {
     value(){
       this.valueId = this.value
-      this.initHandle()
+      // this.initHandle()
     }
   },
 };
@@ -99,12 +99,14 @@ export default {
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item{
     height: auto;
     padding: 0;
+    overflow: hidden;
   }
   .el-select-dropdown__item.selected{
     font-weight: normal;
   }
   ul li >>>.el-tree .el-tree-node__content{
     height:auto;
+    padding: 0 20px;
   }
   .el-tree-node__label{
     font-weight: normal;
@@ -117,6 +119,7 @@ export default {
     color:#606266;
     font-weight: normal;
   }
+  .
 
   /* 开发禁用 */
   /* .el-tree-node:focus>.el-tree-node__content{
