@@ -9,6 +9,7 @@
       :clearable="isClearable"
       :accordion="isAccordion"
       @getValue="getValue($event)"/>
+      <p></p>
       <el-select v-model="testValue">
         <el-option v-for="(item,index) in list" :key="index" :label="item.name" :value="item.id"></el-option>
       </el-select>
@@ -27,7 +28,7 @@ export default {
     return { 
       isClearable:true,     // 可清空（可选）
       isAccordion:true,     // 可收起（可选）
-      valueId:5,            // 初始ID（可选）
+      valueId:28,            // 初始ID（可选）
       props:{               // 配置项（必选）
         value: 'id',
         label: 'name',
@@ -65,20 +66,20 @@ export default {
           {id:27,parentId:0,name:"一级菜单C",rank:1},
           {id:28,parentId:0,name:"一级菜单C",rank:1},
           {id:29,parentId:0,name:"一级菜单C",rank:1},
-          {id:30,parentId:0,name:"一级菜单C",rank:1},
-          {id:31,parentId:0,name:"一级菜单C",rank:1},
-          {id:32,parentId:0,name:"一级菜单C",rank:1},
-          {id:33,parentId:0,name:"一级菜单C",rank:1},
-          {id:34,parentId:0,name:"一级菜单C",rank:1},
-          {id:35,parentId:0,name:"一级菜单C",rank:1},
-          {id:36,parentId:0,name:"一级菜单C",rank:1},
-          {id:37,parentId:0,name:"一级菜单C",rank:1},
-          {id:38,parentId:0,name:"一级菜单C",rank:1},
-          {id:39,parentId:0,name:"一级菜单C",rank:1},
-          {id:40,parentId:0,name:"一级菜单C",rank:1},
+          {id:30,parentId:0,name:"一级菜单d",rank:1},
+          {id:31,parentId:0,name:"一级菜单f",rank:1},
+          {id:32,parentId:0,name:"一级菜单g",rank:1},
+          {id:33,parentId:0,name:"一级菜单h",rank:1},
+          {id:34,parentId:0,name:"一级菜单j",rank:1},
+          {id:35,parentId:0,name:"一级菜单k",rank:1},
+          {id:36,parentId:0,name:"一级菜单l",rank:1},
+          {id:37,parentId:0,name:"一级菜单e",rank:1},
+          {id:38,parentId:0,name:"一级菜单t",rank:1},
+          {id:39,parentId:0,name:"一级菜单u",rank:1},
+          {id:40,parentId:0,name:"一级菜单o",rank:1},
 
       ],
-      testValue:''
+      testValue:28
     };
   },
   computed:{
@@ -95,7 +96,7 @@ export default {
     // 取值
     getValue(value){
       this.valueId = value
-      console.log(this.valueId);
+      // console.log(this.valueId);
     }
   }
 };

@@ -4,17 +4,21 @@
     :clearable="clearable" 
     @clear="clearHandle" 
     @visible-change="visibleChange">
-    <el-option :value="valueTitle" :label="valueTitle">
-      <el-tree  
-        ref="selectTree"
-        :accordion="accordion"
-        :data="options"
-        :props="props"
-        :node-key="props.value"    
-        :default-expanded-keys="defaultExpandedKey"
-        @node-click="handleNodeClick">
-      </el-tree>
-    </el-option>
+    
+      <el-option :value="valueTitle" :label="valueTitle" class="options">
+        <el-scrollbar :native="false">
+          <el-tree  
+            ref="selectTree"
+            :accordion="accordion"
+            :data="options"
+            :props="props"
+            :node-key="props.value"    
+            :default-expanded-keys="defaultExpandedKey"
+            @node-click="handleNodeClick">
+          </el-tree>
+          </el-scrollbar>
+      </el-option>
+      
   </el-select>
 </template>
 
@@ -79,6 +83,8 @@ export default {
       this.valueId = node[this.props.value]
       this.$emit('getValue',this.valueId)
       this.defaultExpandedKey = []
+      
+      console.log(document.querySelectorAll('.el-select-dropdown__item'));
     },
     // 清除选中
     clearHandle(){
@@ -91,8 +97,7 @@ export default {
     // 
     visibleChange(isVisible){
       if(!isVisible) return
-      console.log(this.$refs.selectTree.$el.scrollTop);
-      
+      console.log(document.querySelectorAll('.el-select-dropdown__item'));
     }
   },
   watch: {
@@ -107,9 +112,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item{
-    height: auto;
+    height:auto;
     padding: 0;
     overflow: hidden;
+    padding:5px 0;
+  }
+  .el-popper >>>.el-scrollbar .el-scrollbar__bar{
+    display:none;
+  }
+  .el-popper >>>.el-scrollbar .options .el-scrollbar__bar{
+    display:block;
   }
   .el-select-dropdown__item.selected{
     font-weight: normal;
@@ -121,6 +133,9 @@ export default {
   .el-tree-node__label{
     font-weight: normal;
   }
+  .el-tree{
+    max-height:270px;
+  }
   .el-tree >>>.is-current .el-tree-node__label{
     color: #409EFF;
     font-weight: 700;
@@ -129,6 +144,7 @@ export default {
     color:#606266;
     font-weight: normal;
   }
+
 
   /* 开发禁用 */
   /* .el-tree-node:focus>.el-tree-node__content{
