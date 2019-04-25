@@ -1,5 +1,9 @@
 <template>
-  <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
+  <el-select class="el-tree-select"
+    :value="valueTitle" 
+    :clearable="clearable" 
+    @clear="clearHandle" 
+    @visible-change="visibleChange">
     <el-option :value="valueTitle" :label="valueTitle">
       <el-tree  
         ref="selectTree"
@@ -83,6 +87,12 @@ export default {
       this.defaultExpandedKey = []
       this.$refs.selectTree.setCurrentKey(null)       // 设置默认选中
       this.$emit('getValue',null)
+    },
+    // 
+    visibleChange(isVisible){
+      if(!isVisible) return
+      console.log(this.$refs.selectTree.$el.scrollTop);
+      
     }
   },
   watch: {

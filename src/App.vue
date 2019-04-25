@@ -14,7 +14,6 @@
 
 <script>
 import SelectTree from "./components/treeSelect.vue";
-
 export default {
   name: "app",
   components: {
@@ -73,7 +72,6 @@ export default {
           {id:38,parentId:0,name:"一级菜单C",rank:1},
           {id:39,parentId:0,name:"一级菜单C",rank:1},
           {id:40,parentId:0,name:"一级菜单C",rank:1},
-
       ]
     };
   },
