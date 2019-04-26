@@ -4,21 +4,17 @@
     :clearable="clearable" 
     @clear="clearHandle" 
     @visible-change="visibleChange">
-    
-      <el-option :value="valueTitle" :label="valueTitle" class="options">
-        <el-scrollbar :native="false">
-          <el-tree  
-            ref="selectTree"
-            :accordion="accordion"
-            :data="options"
-            :props="props"
-            :node-key="props.value"    
-            :default-expanded-keys="defaultExpandedKey"
-            @node-click="handleNodeClick">
-          </el-tree>
-          </el-scrollbar>
-      </el-option>
-      
+    <el-option :value="valueTitle" :label="valueTitle" class="options">
+      <el-tree  
+        ref="selectTree"
+        :accordion="accordion"
+        :data="options"
+        :props="props"
+        :node-key="props.value"    
+        :default-expanded-keys="defaultExpandedKey"
+        @node-click="handleNodeClick">
+      </el-tree>
+    </el-option>
   </el-select>
 </template>
 
@@ -83,8 +79,8 @@ export default {
       this.valueId = node[this.props.value]
       this.$emit('getValue',this.valueId)
       this.defaultExpandedKey = []
-      
-      console.log(document.querySelectorAll('.el-select-dropdown__item'));
+      let scrollThumb = document.querySelectorAll('.el-select-dropdown__wrap .el-select-dropdown__item')[0]
+        console.log(scrollThumb.offsetHeight, scrollThumb.scrollHeight);
     },
     // 清除选中
     clearHandle(){
@@ -97,7 +93,10 @@ export default {
     // 
     visibleChange(isVisible){
       if(!isVisible) return
-      console.log(document.querySelectorAll('.el-select-dropdown__item'));
+      this.$nextTick(()=>{
+        let scrollThumb = document.querySelectorAll('.el-select-dropdown__wrap .el-scrollbar__view')[0]
+        console.log(scrollThumb);
+      })
     }
   },
   watch: {
@@ -115,7 +114,6 @@ export default {
     height:auto;
     padding: 0;
     overflow: hidden;
-    padding:5px 0;
   }
   .el-popper >>>.el-scrollbar .el-scrollbar__bar{
     display:none;
@@ -132,9 +130,6 @@ export default {
   }
   .el-tree-node__label{
     font-weight: normal;
-  }
-  .el-tree{
-    max-height:270px;
   }
   .el-tree >>>.is-current .el-tree-node__label{
     color: #409EFF;

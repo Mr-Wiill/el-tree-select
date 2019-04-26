@@ -10,9 +10,9 @@
       :accordion="isAccordion"
       @getValue="getValue($event)"/>
       <p></p>
-      <el-select v-model="testValue">
+      <!-- <el-select v-model="testValue">
         <el-option v-for="(item,index) in list" :key="index" :label="item.name" :value="item.id"></el-option>
-      </el-select>
+      </el-select> -->
   </div>
 </template>
 
