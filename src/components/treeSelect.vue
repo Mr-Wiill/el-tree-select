@@ -1,6 +1,17 @@
 <template>
   <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
     <el-option :value="valueTitle" :label="valueTitle">
+      <!-- <el-scrollbar>
+        <el-tree  
+          ref="selectTree"
+          :accordion="accordion"
+          :data="options"
+          :props="props"
+          :node-key="props.value"    
+          :default-expanded-keys="defaultExpandedKey"
+          @node-click="handleNodeClick">
+        </el-tree>
+      </el-scrollbar> -->
       <el-tree  
         ref="selectTree"
         :accordion="accordion"
@@ -98,8 +109,13 @@ export default {
 <style scoped>
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item{
     height: auto;
+    max-height: 274px;
     padding: 0;
     overflow: hidden;
+    overflow-y: auto;
+  }
+  .el-scrollbar >>>.el-select-dropdown__wrap{
+    max-height: none;
   }
   .el-select-dropdown__item.selected{
     font-weight: normal;
