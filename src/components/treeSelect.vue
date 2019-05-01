@@ -1,18 +1,7 @@
 <template>
   <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
     <el-option :value="valueTitle" :label="valueTitle">
-      <!-- <el-scrollbar>
-        <el-tree  
-          ref="selectTree"
-          :accordion="accordion"
-          :data="options"
-          :props="props"
-          :node-key="props.value"    
-          :default-expanded-keys="defaultExpandedKey"
-          @node-click="handleNodeClick">
-        </el-tree>
-      </el-scrollbar> -->
-      <el-tree  
+      <el-tree  id="tree-option"
         ref="selectTree"
         :accordion="accordion"
         :data="options"
@@ -79,6 +68,13 @@ export default {
         this.$refs.selectTree.setCurrentKey(this.valueId)       // 设置默认选中
         this.defaultExpandedKey = [this.valueId]      // 设置默认展开
       } 
+      this.$nextTick(()=>{
+        let scrollWrap = document.querySelectorAll('.el-scrollbar .el-select-dropdown__wrap')[0]
+        let scrollBar = document.querySelectorAll('.el-scrollbar .el-scrollbar__bar')
+        scrollWrap.style.cssText = 'margin: 0px; max-height: none; overflow: hidden;'
+        scrollBar.forEach(ele => ele.style.width = 0)
+      })
+
     },
     // 切换选项
     handleNodeClick(node){
@@ -92,14 +88,20 @@ export default {
       this.valueTitle = ''
       this.valueId = null
       this.defaultExpandedKey = []
-      this.$refs.selectTree.setCurrentKey(null)       // 设置默认选中
+      this.clearSelected()
       this.$emit('getValue',null)
+    },
+    /* 清空选中样式 */
+    clearSelected(){
+      let allNode = document.querySelectorAll('#tree-option .el-tree-node')
+      allNode.forEach((element)=>{
+        element.classList.remove('is-current')
+      })
     }
   },
   watch: {
     value(){
       this.valueId = this.value
-      // this.initHandle()
     }
   },
 };
@@ -113,9 +115,6 @@ export default {
     padding: 0;
     overflow: hidden;
     overflow-y: auto;
-  }
-  .el-scrollbar >>>.el-select-dropdown__wrap{
-    max-height: none;
   }
   .el-select-dropdown__item.selected{
     font-weight: normal;

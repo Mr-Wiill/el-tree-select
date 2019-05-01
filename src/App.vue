@@ -71,7 +71,7 @@ export default {
           {id:37,parentId:0,name:"一级菜单C",rank:1},
           {id:38,parentId:0,name:"一级菜单C",rank:1},
           {id:39,parentId:0,name:"一级菜单C",rank:1},
-          {id:40,parentId:0,name:"一级菜单C",rank:1},
+          {id:40,parentId:0,name:"一级菜单end",rank:1},
       ]
     };
   },
@@ -104,4 +104,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
