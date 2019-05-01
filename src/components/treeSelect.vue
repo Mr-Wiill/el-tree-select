@@ -94,9 +94,7 @@ export default {
     /* 清空选中样式 */
     clearSelected(){
       let allNode = document.querySelectorAll('#tree-option .el-tree-node')
-      allNode.forEach((element)=>{
-        element.classList.remove('is-current')
-      })
+      allNode.forEach((element)=>element.classList.remove('is-current'))
     }
   },
   watch: {

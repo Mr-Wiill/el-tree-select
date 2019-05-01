@@ -46,8 +46,6 @@ export default {
           {id:12,parentId:11,name:"八级菜单A-A-A-A-A-A-A-A",rank:8},
           {id:13,parentId:12,name:"九级菜单A-A-A-A-A-A-A-A-A",rank:9},
           {id:14,parentId:13,name:"十级菜单A-A-A-A-A-A-A-A-A-A",rank:10},
-<<<<<<< HEAD
-=======
           {id:15,parentId:0,name:"一级菜单C",rank:1},
           {id:16,parentId:0,name:"一级菜单C",rank:1},
           {id:17,parentId:0,name:"一级菜单C",rank:1},
@@ -73,8 +71,7 @@ export default {
           {id:37,parentId:0,name:"一级菜单C",rank:1},
           {id:38,parentId:0,name:"一级菜单C",rank:1},
           {id:39,parentId:0,name:"一级菜单C",rank:1},
-          {id:40,parentId:0,name:"一级菜单end",rank:1},
->>>>>>> resolve-scroll-bug
+          {id:40,parentId:0,name:"一级菜单end",rank:1}
       ]
     };
   },
