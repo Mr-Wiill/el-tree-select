@@ -23,7 +23,7 @@ export default {
     return { 
       isClearable:true,     // 可清空（可选）
       isAccordion:true,     // 可收起（可选）
-      valueId:5,            // 初始ID（可选）
+      valueId:20,            // 初始ID（可选）
       props:{               // 配置项（必选）
         value: 'id',
         label: 'name',
@@ -46,6 +46,35 @@ export default {
           {id:12,parentId:11,name:"八级菜单A-A-A-A-A-A-A-A",rank:8},
           {id:13,parentId:12,name:"九级菜单A-A-A-A-A-A-A-A-A",rank:9},
           {id:14,parentId:13,name:"十级菜单A-A-A-A-A-A-A-A-A-A",rank:10},
+<<<<<<< HEAD
+=======
+          {id:15,parentId:0,name:"一级菜单C",rank:1},
+          {id:16,parentId:0,name:"一级菜单C",rank:1},
+          {id:17,parentId:0,name:"一级菜单C",rank:1},
+          {id:18,parentId:0,name:"一级菜单C",rank:1},
+          {id:19,parentId:0,name:"一级菜单C",rank:1},
+          {id:20,parentId:0,name:"一级菜单C",rank:1},
+          {id:21,parentId:0,name:"一级菜单C",rank:1},
+          {id:22,parentId:0,name:"一级菜单C",rank:1},
+          {id:23,parentId:0,name:"一级菜单C",rank:1},
+          {id:24,parentId:0,name:"一级菜单C",rank:1},
+          {id:25,parentId:0,name:"一级菜单C",rank:1},
+          {id:26,parentId:0,name:"一级菜单C",rank:1},
+          {id:27,parentId:0,name:"一级菜单C",rank:1},
+          {id:28,parentId:0,name:"一级菜单C",rank:1},
+          {id:29,parentId:0,name:"一级菜单C",rank:1},
+          {id:30,parentId:0,name:"一级菜单C",rank:1},
+          {id:31,parentId:0,name:"一级菜单C",rank:1},
+          {id:32,parentId:0,name:"一级菜单C",rank:1},
+          {id:33,parentId:0,name:"一级菜单C",rank:1},
+          {id:34,parentId:0,name:"一级菜单C",rank:1},
+          {id:35,parentId:0,name:"一级菜单C",rank:1},
+          {id:36,parentId:0,name:"一级菜单C",rank:1},
+          {id:37,parentId:0,name:"一级菜单C",rank:1},
+          {id:38,parentId:0,name:"一级菜单C",rank:1},
+          {id:39,parentId:0,name:"一级菜单C",rank:1},
+          {id:40,parentId:0,name:"一级菜单end",rank:1},
+>>>>>>> resolve-scroll-bug
       ]
     };
   },
@@ -78,4 +107,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
