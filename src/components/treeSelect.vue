@@ -1,6 +1,6 @@
 <template>
   <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
-    <el-option :value="valueTitle" :label="valueTitle">
+    <el-option :value="valueTitle" :label="valueTitle" class="options">
       <el-tree  id="tree-option"
         ref="selectTree"
         :accordion="accordion"
@@ -68,13 +68,20 @@ export default {
         this.$refs.selectTree.setCurrentKey(this.valueId)       // 设置默认选中
         this.defaultExpandedKey = [this.valueId]      // 设置默认展开
       } 
+      this.initScroll()
+    },
+    // 初始化滚动条
+    initScroll(){
       this.$nextTick(()=>{
         let scrollWrap = document.querySelectorAll('.el-scrollbar .el-select-dropdown__wrap')[0]
         let scrollBar = document.querySelectorAll('.el-scrollbar .el-scrollbar__bar')
         scrollWrap.style.cssText = 'margin: 0px; max-height: none; overflow: hidden;'
         scrollBar.forEach(ele => ele.style.width = 0)
+        let treeBar = document.getElementsByClassName('options')[0]
+        treeBar.scrollTo(treeBar.scrollLeft,100)
+        console.log(treeBar);
+        
       })
-
     },
     // 切换选项
     handleNodeClick(node){
