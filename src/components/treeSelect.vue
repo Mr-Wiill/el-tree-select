@@ -79,8 +79,6 @@ export default {
         scrollBar.forEach(ele => ele.style.width = 0)
         let treeBar = document.getElementsByClassName('options')[0]
         treeBar.scrollTo(treeBar.scrollLeft,100)
-        console.log(treeBar);
-        
       })
     },
     // 切换选项
