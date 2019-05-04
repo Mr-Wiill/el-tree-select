@@ -76,6 +76,7 @@ export default {
     };
   },
   computed:{
+    /* 转树形数据 */
     optionData(){
       let cloneData = JSON.parse(JSON.stringify(this.list))      // 对源数据深度克隆
       return  cloneData.filter(father=>{                      // 循环所有项，并添加children属性

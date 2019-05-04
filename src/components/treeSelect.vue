@@ -77,8 +77,6 @@ export default {
         let scrollBar = document.querySelectorAll('.el-scrollbar .el-scrollbar__bar')
         scrollWrap.style.cssText = 'margin: 0px; max-height: none; overflow: hidden;'
         scrollBar.forEach(ele => ele.style.width = 0)
-        let treeBar = document.getElementsByClassName('options')[0]
-        treeBar.scrollTo(treeBar.scrollLeft,100)
       })
     },
     // 切换选项
@@ -105,6 +103,7 @@ export default {
   watch: {
     value(){
       this.valueId = this.value
+      this.initHandle()
     }
   },
 };
