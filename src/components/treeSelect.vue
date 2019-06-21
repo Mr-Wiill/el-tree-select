@@ -1,7 +1,8 @@
 <template>
   <el-select :value="valueTitle" :clearable="clearable" @clear="clearHandle">
     <el-option :value="valueTitle" :label="valueTitle" class="options">
-      <el-tree  id="tree-option"
+      <el-tree  
+        id="tree-option"
         ref="selectTree"
         :accordion="accordion"
         :data="options"
@@ -18,37 +19,41 @@
 export default {
   name: "el-tree-select",
   props:{
-    /* 配置项 */
+
+    // 配置项
     props:{
       type: Object,
-      default:()=>{
-        return {
+      default: {
           value:'id',             // ID字段名
           label: 'title',         // 显示名称
           children: 'children'    // 子级字段名
         }
-      }
     },
-    /* 选项列表数据(树形结构的对象数组) */
+    
+    // 选项列表数据(树形结构的对象数组)
     options:{
       type: Array,       
-      default: ()=>{ return [] }
+      default: []
     },
-    /* 初始值 */
+    
+    // 初始值
     value:{
       type: Number,
-      default: ()=>{ return null }
+      default: null
     },
-    /* 可清空选项 */
+    
+    // 可清空选项
     clearable:{
       type:Boolean,
-      default:()=>{ return true }
+      default: true
     },
-    /* 自动收起 */
+    
+    // 自动收起
     accordion:{
       type:Boolean,
-      default:()=>{ return false }
-    },
+      default: false
+    }
+
   },
   data() {
     return {
@@ -61,6 +66,7 @@ export default {
     this.initHandle()
   },
   methods: {
+
     // 初始化值
     initHandle(){
       if(this.valueId){
@@ -70,6 +76,7 @@ export default {
       } 
       this.initScroll()
     },
+
     // 初始化滚动条
     initScroll(){
       this.$nextTick(()=>{
@@ -79,6 +86,7 @@ export default {
         scrollBar.forEach(ele => ele.style.width = 0)
       })
     },
+
     // 切换选项
     handleNodeClick(node){
       this.valueTitle = node[this.props.label]
@@ -86,6 +94,7 @@ export default {
       this.$emit('getValue',this.valueId)
       this.defaultExpandedKey = []
     },
+
     // 清除选中
     clearHandle(){
       this.valueTitle = ''
@@ -94,22 +103,24 @@ export default {
       this.clearSelected()
       this.$emit('getValue',null)
     },
-    /* 清空选中样式 */
+
+    // 清空选中样式
     clearSelected(){
       let allNode = document.querySelectorAll('#tree-option .el-tree-node')
       allNode.forEach((element)=>element.classList.remove('is-current'))
     }
+
   },
+
   watch: {
     value(){
       this.valueId = this.value
       this.initHandle()
     }
   },
-};
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .el-scrollbar .el-scrollbar__view .el-select-dropdown__item{
     height: auto;

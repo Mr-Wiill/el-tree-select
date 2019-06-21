@@ -21,10 +21,10 @@ export default {
   },
   data() {
     return { 
-      isClearable:true,     // 可清空（可选）
-      isAccordion:true,     // 可收起（可选）
+      isClearable:true,      // 可清空（可选）
+      isAccordion:true,      // 可收起（可选）
       valueId:20,            // 初始ID（可选）
-      props:{               // 配置项（必选）
+      props:{                // 配置项（必选）
         value: 'id',
         label: 'name',
         children: 'children',
