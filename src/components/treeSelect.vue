@@ -57,12 +57,13 @@ export default {
   },
   data() {
     return {
-      valueId:this.value,    // 初始值
+      valueId: null,
       valueTitle:'',
       defaultExpandedKey:[]    
     }
   },
   mounted(){
+    this.valueId = this.value,    // 初始值
     this.initHandle()
   },
   methods: {
