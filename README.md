@@ -1,6 +1,6 @@
 ![image](https://github.com/KBeginner/vue-treeSelect-component/blob/master/src/assets/el-select-tree.gif)
 
-# vue-treeSelect-component
+# el-tree-select
 
 ## Project setup
 ```
