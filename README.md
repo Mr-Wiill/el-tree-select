@@ -1,4 +1,4 @@
-![image](https://github.com/KBeginner/vue-treeSelect-component/blob/master/src/assets/el-select-tree.gif)
+![image](https://github.com/KBeginner/el-tree-select/blob/master/public/assets/el-select-tree.gif)
 
 # el-tree-select
 
