@@ -31,28 +31,16 @@ export default {
     },
     
     // 选项列表数据(树形结构的对象数组)
-    options:{
-      type: Array,       
-      default: []
-    },
+    options:{ type: Array, default: [] },
     
     // 初始值
-    value:{
-      type: Number,
-      default: null
-    },
+    value:{ type: Number, default: null },
     
     // 可清空选项
-    clearable:{
-      type:Boolean,
-      default: true
-    },
+    clearable:{ type:Boolean, default: true },
     
     // 自动收起
-    accordion:{
-      type:Boolean,
-      default: false
-    }
+    accordion:{ type:Boolean, default: false }
 
   },
   data() {
@@ -67,7 +55,6 @@ export default {
     this.initHandle()
   },
   methods: {
-
     // 初始化值
     initHandle(){
       if(this.valueId){
@@ -148,15 +135,4 @@ export default {
     color:#606266;
     font-weight: normal;
   }
-
-  /* 开发禁用 */
-  /* .el-tree-node:focus>.el-tree-node__content{
-    background-color:transparent;
-    background-color: #f5f7fa;
-    color: #c0c4cc;
-    cursor: not-allowed;
-  }
-  .el-tree-node__content:hover{
-    background-color: #f5f7fa;
-  } */
 </style>
